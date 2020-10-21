@@ -74,3 +74,11 @@ cdef extern from "opencog/ure/backwardchainer/BackwardChainer.h" namespace "open
 
 cdef extern from "opencog/ure/URELogger.h" namespace "opencog":
     cdef cLogger& ure_logger()
+
+cdef extern from "opencog/ure/MixtureModel.h" namespace "opencog":
+    cdef cppclass cMixtureModel "opencog::MixtureModel":
+        MixtureModel(const set[cHandle]& models,
+                     double cpx_penalty,
+                     double compressiveness)
+
+        cTruthValue operator()() const
